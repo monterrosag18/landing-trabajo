@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupCrud - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> <!-- Reusing global vars and resets -->
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <!-- Abstract Background Elements (reused from landing) -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-grid"></div>
+
+    <main class="login-wrapper">
+        <div class="login-container glass-panel">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="logo-icon">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M2 17L12 22L22 17" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M2 12L12 17L22 12" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-main">SupCrud</span>
+                    <span class="logo-sub">ACCESO GLOBAL</span>
+                </div>
+            </div>
+
+            <div class="auth-toggle">
+                <button class="toggle-btn active" id="btnSignIn">Sign In</button>
+                <button class="toggle-btn" id="btnSignUp">Register Workspace</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <form id="signInForm" class="auth-form active">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="emailInput" placeholder="name@workspace.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="forgot-link">
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="cta-button auth-submit">Sign In to Dashboard</button>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <button type="button" class="google-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24">
+                        <path fill="#4285F4"
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path fill="#34A853"
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path fill="#FBBC05"
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path fill="#EA4335"
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                        <path fill="none" d="M1 1h22v22H1z" />
+                    </svg>
+                    Continue with Google
+                </button>
+            </form>
+
+            <!-- Register Form (Hidden by default) -->
+            <form id="signUpForm" class="auth-form">
+                <div class="input-group">
+                    <label>Workspace / Business Name</label>
+                    <input type="text" id="regNameInput" placeholder="e.g. Cafe Bistro Sol" required>
+                </div>
+                <div class="input-group">
+                    <label>Admin Email</label>
+                    <input type="email" id="regEmailInput" placeholder="admin@domain.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="cta-button auth-submit">Create Workspace</button>
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+                <button type="button" class="google-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24">
+                        <path fill="#4285F4"
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path fill="#34A853"
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path fill="#FBBC05"
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path fill="#EA4335"
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                        <path fill="none" d="M1 1h22v22H1z" />
+                    </svg>
+                    Sign up with Google
+                </button>
+            </form>
+
+            <p class="login-note">
+                <strong>Demo Routing:</strong><br>
+                Use email <code>@crudzaso.com</code> to enter as <b>Owner Global</b>.<br>
+                Any other email enters as <b>Workspace Agent</b>.
+            </p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnSignIn = document.getElementById('btnSignIn');
+            const btnSignUp = document.getElementById('btnSignUp');
+            const formSignIn = document.getElementById('signInForm');
+            const formSignUp = document.getElementById('signUpForm');
+            const emailInput = document.getElementById('emailInput');
+
+            // Toggle logic
+            btnSignIn.addEventListener('click', () => {
+                btnSignIn.classList.add('active');
+                btnSignUp.classList.remove('active');
+                formSignIn.classList.add('active');
+                formSignUp.classList.remove('active');
+            });
+
+            btnSignUp.addEventListener('click', () => {
+                btnSignUp.classList.add('active');
+                btnSignIn.classList.remove('active');
+                formSignUp.classList.add('active');
+                formSignIn.classList.remove('active');
+            });
+
+            // Mock Routing logic based on requirements
+            formSignIn.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = emailInput.value.trim().toLowerCase();
+
+                // Save basic mock info for the dashboard
+                localStorage.setItem('supcrud_user_email', email);
+                localStorage.setItem('supcrud_user_name', 'Agente ' + email.split('@')[0]);
+
+                // Requirement: El correo del Owner debe tener formato nombredelteam@crudzaso.com
+                if (email.endsWith('@crudzaso.com')) {
+                    localStorage.setItem('supcrud_user_name', 'Owner Global');
+                    window.location.href = 'owner.html';
+                } else {
+                    window.location.href = 'workspace.html';
+                }
+            });
+
+            formSignUp.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const regName = document.getElementById('regNameInput').value;
+                const regEmail = document.getElementById('regEmailInput').value;
+
+                localStorage.setItem('supcrud_user_name', regName);
+                localStorage.setItem('supcrud_user_email', regEmail);
+
+                alert('Workspace Created (Mock)! Redirecting to Dashboard...');
+                window.location.href = 'workspace.html';
+            });
+        });
+    </script>
+</body>
+
+</html>

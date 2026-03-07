@@ -1,0 +1,159 @@
+/* supcrud-widget.css - Scoped styles for the embeddable widget */
+#supcrud-widget-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+#supcrud-widget-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4A90E2, #1a2a4b);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#supcrud-widget-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+#supcrud-widget-modal {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    transform-origin: bottom right;
+    animation: supcrud-popIn 0.3s ease forwards;
+    border: 1px solid #e2e8f0;
+}
+
+@keyframes supcrud-popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.supcrud-header {
+    background: #1a202c;
+    color: white;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.supcrud-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.supcrud-close {
+    background: transparent;
+    border: none;
+    color: #a0aec0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.supcrud-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.supcrud-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.supcrud-form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.supcrud-input,
+.supcrud-textarea,
+.supcrud-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.supcrud-input:focus,
+.supcrud-textarea:focus,
+.supcrud-select:focus {
+    border-color: #4A90E2;
+}
+
+.supcrud-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.supcrud-submit {
+    background: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+
+.supcrud-submit:hover {
+    background: #3182ce;
+}
+
+.supcrud-success {
+    display: none;
+    padding: 30px 20px;
+    text-align: center;
+    color: #2d3748;
+}
+
+.supcrud-ref {
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    background: #edf2f7;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #3182ce;
+}

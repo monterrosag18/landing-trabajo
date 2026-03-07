@@ -1,0 +1,291 @@
+/* Neumorphic / Light theme for Ticket Portal */
+:root {
+    --bg-light: #f0f3f8;
+    --text-dark: #2d3748;
+    --text-muted: #718096;
+    --primary: #4A90E2;
+    --success: #48bb78;
+    --shadow-light: #ffffff;
+    --shadow-dark: #d1d9e6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: transparent;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+}
+
+.logo-text small {
+    font-size: 0.7em;
+    color: var(--text-muted);
+}
+
+.workspace-brand {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Container */
+.ticket-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Neumorphic Utilities */
+.neumorphic {
+    background: var(--bg-light);
+    border-radius: 12px;
+    box-shadow: 8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+}
+
+.neumorphic-inset {
+    background: var(--bg-light);
+    border-radius: 8px;
+    box-shadow: inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}
+
+.neumorphic-btn {
+    background: var(--bg-light);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px var(--shadow-dark),
+        -4px -4px 8px var(--shadow-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+}
+
+.neumorphic-btn:active {
+    box-shadow: inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}
+
+.btn-primary {
+    color: var(--primary);
+    padding: 12px 24px;
+}
+
+.btn-secondary {
+    color: var(--text-muted);
+    padding: 12px 24px;
+}
+
+/* Search Section */
+.search-section {
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: center;
+}
+
+.neumorphic-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: var(--bg-light);
+    border-radius: 8px;
+    box-shadow: inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Results */
+.ticket-result {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.neumorphic-card {
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 16px;
+    box-shadow: 8px 8px 16px var(--shadow-dark),
+        -8px -8px 16px var(--shadow-light);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.status-row,
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.status-open {
+    background: #e6fffa;
+    color: #319795;
+    border: 1px solid #b2f5ea;
+}
+
+.btn-text {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.btn-text:hover {
+    text-decoration: underline;
+}
+
+/* Skeletons */
+.blurred {
+    opacity: 0.5;
+    filter: blur(2px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.skeleton-line {
+    height: 12px;
+    background: #cbd5e0;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.skeleton-line.short {
+    width: 60%;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(240, 243, 248, 0.8);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    width: 100%;
+    max-width: 400px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.otp-inputs {
+    display: flex;
+    gap: 8px;
+    margin: 1.5rem 0;
+    justify-content: center;
+}
+
+.otp-digit {
+    width: 40px;
+    height: 48px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background: var(--bg-light);
+    box-shadow: inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+    color: var(--text-dark);
+}
+
+.otp-digit:focus {
+    outline: 2px solid var(--primary);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modal-actions button {
+    flex: 1;
+}
+
+.resend-text {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--primary);
+    cursor: pointer;
+}

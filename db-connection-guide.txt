@@ -1,0 +1,59 @@
+========================================================
+SupCrud Frontend DB Connection Guide
+========================================================
+
+Este archivo explica los puntos exactos dentro del código Vanilla JS donde deberás modificar la lógica de LocalStorage (que dejé como prueba funcional) y cambiarla por peticiones reales a tu backend que se conectará con la base de datos MySQL.
+
+ARCHIVOS A MODIFICAR:
+--------------------------------------------------------
+
+1. js/ticket.js (Página Pública de Consulta)
+--------------------------------------------------------
+Ubicación: Línea ~20 (btnTrack.addEventListener)
+Actual: Evalúa que no esté vacío y muestra el ticketResult y cambia el texto del workspace.
+Cambiar a:
+    fetch(`https://tu-api.com/api/tickets/public/${code}`)
+    .then(res => res.json())
+    .then(data => {
+        // poblar el HTML (ticketCreated, ticketUpdated, ticketSubject)
+        // con la data devuelta por MySQL.
+    });
+
+Ubicación: Línea ~70 (btnVerifyOtp.addEventListener)
+Actual: Valida contra "123456" fijo en el JS.
+Cambiar a:
+    fetch(`https://tu-api.com/api/tickets/verify-otp`, {
+        method: 'POST', body: JSON.stringify({ referenceCode, otp: enteredOtp })
+    })
+    .then(...)
+
+2. js/workspace.js (Dashboard de Agentes)
+--------------------------------------------------------
+Ubicación: Líneas 3 a 11 (mockTickets y localStorage)
+Actual: Carga un array harcodeado a localStorage y lo lee.
+Cambiar a:
+    fetch(`https://tu-api.com/api/workspaces/${currentWorkspaceId}/tickets`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+    })
+    .then(res => res.json())
+    .then(data => {
+        tickets = data; // Tu array desde MySQL
+        renderTable(tickets);
+    });
+
+NOTA: La función `applyFilters()` ya está preparada para filtrar arrays de JS en el Frontend, pero en un sistema grande (como dicen los requerimientos), es recomendable hacer estos filtros directamente en el backend (MySQL) enviando query params en el fetch (ej. `?status=OPEN&type=P`).
+
+3. js/owner.js (Dashboard del Admin Global)
+--------------------------------------------------------
+Ubicación: Líneas 3 a 13 (mockWorkspaces)
+Cambiar a:
+    fetch(`https://tu-api.com/api/admin/workspaces`, { ... })
+    .then(res => res.json())
+    .then(data => renderWorkspaces(data));
+
+Ubicación: Línea 55 (.suspend-btn event listener)
+Cambiar a:
+    Hacer un fetch PUT a la ruta para cambiar el estado (ACTIVE/SUSPENDED) en MySQL y, si es exitoso, volver a recargar la lista de workspaces de DB.
+
+--------------------------------------------------------
+¡Éxitos conectando esta interfaz limpia a tu backend MySQL!

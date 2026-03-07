@@ -1,0 +1,186 @@
+/* Specific styles for the Login Page */
+
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    padding-top: 0;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container .logo {
+    margin-bottom: 2rem;
+}
+
+/* Toggle buttons */
+.auth-toggle {
+    display: flex;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toggle-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Forms */
+.auth-form {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.auth-form.active {
+    display: flex;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-blue);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.forgot-link {
+    text-align: right;
+    font-size: 0.8rem;
+}
+
+.forgot-link a {
+    color: var(--accent-light);
+    text-decoration: none;
+}
+
+.forgot-link a:hover {
+    text-decoration: underline;
+}
+
+.auth-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 14px;
+    font-size: 1rem;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin: 1rem 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.divider span {
+    padding: 0 10px;
+}
+
+/* Google Btn */
+.google-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background: white;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.google-btn:hover {
+    background: #f1f1f1;
+}
+
+.login-note {
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+.login-note code {
+    color: #fc8d62;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 4px;
+    border-radius: 4px;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupCrud by Crudzaso - Soporte Inteligente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- 3D Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- Abstract Background Elements (Existing fallbacks) -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Header / Navbar -->
+    <header class="glass-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="logo-icon">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M2 17L12 22L22 17" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M2 12L12 17L22 12" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-main">SupCrud</span>
+                    <span class="logo-sub">by Crudzaso</span>
+                </div>
+            </div>
+
+            <nav class="desktop-links">
+                <a href="#" class="active">Inicio</a>
+                <a href="#">Plataforma</a>
+                <a href="#">Documentos</a>
+                <a href="public-ticket.html">Soporte Global</a>
+                <a href="login.html" style="color: #4A90E2; font-weight: 700;">Acceso Workspace</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">SOPORTE INTELIGENTE.<br>CONFIANZA GLOBAL.</h1>
+            <p class="hero-subtitle">
+                SupCrud by Crudzaso: La plataforma SaaS que integra PQRS con IA<br>
+                táctica, gestión de agentes y la calidad que eligen las empresas líderes.
+            </p>
+
+            <button class="cta-button glass-button">
+                SOLICITAR ACCESO <span class="cta-subtext">(Widget Brutalista)</span>
+            </button>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="features-grid container">
+            <!-- Card 1 -->
+            <div class="feature-card 3d-card">
+                <div class="card-base"></div>
+                <div class="card-cap">
+                    <svg class="feature-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                    </svg>
+                    <h3>PROCESAMIENTO<br>IA RÍGIDO</h3>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="feature-card 3d-card">
+                <div class="card-base"></div>
+                <div class="card-cap">
+                    <svg class="feature-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <h3>COLABORACIÓN<br>AGENTE ESTRUCTURADA</h3>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="feature-card 3d-card">
+                <div class="card-base"></div>
+                <div class="card-cap">
+                    <svg class="feature-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <h3>VALIDACIÓN OTP<br>BLINDADA</h3>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="feature-card 3d-card">
+                <div class="card-base"></div>
+                <div class="card-cap">
+                    <svg class="feature-icon" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                    <h3>ADD-ONS<br>MODULARES RAW</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integration Section -->
+        <section class="integration-section container glass-panel">
+            <div class="integration-label">
+                <span class="label-title">INTEGRACIÓN</span>
+                <span class="label-subtitle">DIRECTA</span>
+            </div>
+            <div class="code-snippet">
+                <code>&lt;script src="supcrud-raw-widget.js"&gt;&lt;/script&gt;</code>
+            </div>
+            <button class="demo-button">VER DEMO</button>
+        </section>
+    </main>
+
+    <!-- Three.js for 3D floating background elements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- SupCrud Embeddable Widget Demo -->
+    <script src="widget/supcrud-widget.js"></script>
+</body>
+
+</html>

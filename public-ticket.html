@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupCrud - Consulta de Ticket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/ticket.css">
+</head>
+
+<body>
+    <!-- Top Branding -->
+    <header class="app-header">
+        <div class="logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="logo-icon">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+                <path d="M2 17L12 22L22 17" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+                <path d="M2 12L12 17L22 12" stroke="#4A90E2" stroke-width="2" stroke-linejoin="round" />
+            </svg>
+            <span class="logo-text">SupCrud <small>by Crudzaso</small></span>
+        </div>
+        <div class="workspace-brand" id="workspaceBrand">
+            - TICKET PORTAL
+        </div>
+    </header>
+
+    <main class="ticket-container">
+        <!-- Search Bar -->
+        <div class="search-section neumorphic">
+            <label class="sr-only" for="referenceCode">REFERENCE CODE</label>
+            <input type="text" id="referenceCode" placeholder="Enter Reference Code (e.g., REF-4567-Nexus)"
+                class="neumorphic-input">
+            <button id="btnTrack" class="btn-primary neumorphic-btn">Track My Ticket</button>
+        </div>
+
+        <!-- Result Container -->
+        <div id="ticketResult" class="ticket-result" style="display: none;">
+
+            <!-- Basic View -->
+            <div class="card neumorphic-card basic-view">
+                <h3 class="card-title">Basic View</h3>
+                <div class="status-row">
+                    <span class="label">Ticket Status</span>
+                    <span class="badge status-open">OPEN</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Created At:</span>
+                    <span class="value" id="ticketCreated">Oct 26, 2023</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Last Updated:</span>
+                    <span class="value" id="ticketUpdated">5 hours ago</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Subject:</span>
+                    <span class="value" id="ticketSubject">Pedido no entregado</span>
+                </div>
+                <button id="btnRequestOtp" class="btn-text">REQUEST OTP FOR FULL DETAIL</button>
+            </div>
+
+            <!-- Full Details Placeholders (Blurred or hidden) -->
+            <div class="card neumorphic-card full-view blurred">
+                <h3 class="card-title">Full Conversation</h3>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+
+                <h3 class="card-title mt-4">Attachments</h3>
+                <div class="skeleton-line"></div>
+
+                <h3 class="card-title mt-4">History</h3>
+                <div class="skeleton-line"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- OTP Modal -->
+    <div class="modal-overlay" id="otpModal">
+        <div class="modal neumorphic-card">
+            <div class="modal-header">
+                <h3>Verify Identity</h3>
+                <button class="close-btn" id="btnCloseModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>An OTP code has been sent to the email associated with this ticket.</p>
+                <div class="otp-inputs">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                    <input type="text" maxlength="1" class="otp-digit">
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-primary neumorphic-btn" id="btnVerifyOtp">Verify and Show Details</button>
+                    <button class="btn-secondary neumorphic-btn" id="btnCancelOtp">Cancel</button>
+                </div>
+                <p class="resend-text">Resend Code (Available in 45s)</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ticket.js"></script>
+</body>
+
+</html>
