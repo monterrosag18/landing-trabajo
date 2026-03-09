@@ -1,0 +1,57 @@
+======================================================
+     SUPCRUD - GUÍA DE INSTALACIÓN Y CONEXIÓN
+======================================================
+
+Esta guía te explica cómo instalar y hacer funcionar el
+proyecto SupCrud (Frontend y Backend) en cualquier 
+otra computadora desde cero.
+
+--- REQUISITOS PREVIOS ---
+1. Node.js (v16 o superior) instalado en la nueva PC.
+2. XAMPP o cualquier servidor MySQL local instalado y corriendo (Puerto 3306).
+
+
+--- PASO 1: PREPARAR LA BASE DE DATOS MYSQ / SQL ---
+1. Abre tu gestor de base de datos MySQL (phpMyAdmin, DBeaver, o Workbench).
+2. Abre el archivo adjunto llamado "database.sql" (incluido en esta carpeta).
+3. Ejecútalo por completo. Este script hará dos cosas automáticamente:
+   - Creará la base de datos llamada `supcrud_by_crudzaso` (si no existe).
+   - Creará las 3 tablas con todas sus columnas exactas:
+     `users`, `workspaces`, y `ticket_references`.
+4. ¡Listo! La base de datos está preparada.
+
+
+--- PASO 2: INICIAR EL BACKEND (NODE.JS) ---
+El backend de la aplicación se encuentra ahora en la carpeta "backend".
+Para iniciarlo en la nueva PC:
+1. Abre una terminal (CMD o PowerShell) y entra a la carpeta del backend:
+   cd ruta/hacia/supcrud/backend
+2. Instala las dependencias de Node ejecutando:
+   npm install
+3. Inicia el servidor ejecutando:
+   node server.js
+   (Verás mensajes en verde diciendo "Server HTTP running on port 3002" y "MySQL conectado").
+
+
+--- PASO 3: ARCHIVOS DE CONEXIÓN (.env y api-config.js) ---
+Si MySQL en la nueva computadora tiene contraseña de Root, o necesitas cambiar el puerto, modifica los siguientes archivos:
+
+> EN EL BACKEND (.env):
+En la carpeta /backend/.env, puedes cambiar las credenciales de MySQL:
+   MYSQL_HOST=localhost
+   MYSQL_USER=root
+   MYSQL_PASSWORD=tu_nueva_contraseña   <-- (Cámbialo si tu MySQL tiene clave)
+   MYSQL_DATABASE=supcrud_by_crudzaso
+
+> EN EL FRONTEND (api-config.js):
+En la carpeta principal del frontend (supcrud/js/api-config.js), este archivo controla hacia qué puerto o dominio apunta la web:
+   const API_CONFIG = {
+       BASE_URL: 'http://localhost:3002/api',
+   };
+Si en algún momento en la nueva PC o productivo el backend cambia de puerto o dominio de internet, debes modificar esa línea.
+
+
+--- PASO 4: INICIAR EL FRONTEND ---
+1. Para abrir la página web, es altamente recomendable usar una extensión como "Live Server" en VSCode, o correr un servidor local `http-server` en la raíz de la carpeta frontend.
+2. Navega a `index.html`. 
+¡Todo funcionará y conectará a tu base de datos nueva al instante!

@@ -1,23 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mock Data for Workspaces
-    const mockWorkspaces = [
-        { id: '1', name: 'Cafe Bistro Sol', key: 'WKEY-CB-01', logo: 'CB', active: true, openTickets: 12, activeAddons: 3 },
-        { id: '2', name: 'Cafe Bistro', key: 'WKEY-CB-02', logo: 'CB', active: true, openTickets: 12, activeAddons: 3 },
-        { id: '3', name: 'Cafe Bistro Sol', key: 'WKEY-CB-03', logo: 'CB', active: true, openTickets: 12, activeAddons: 3 },
-        { id: '4', name: 'Cafe Bistro', key: 'WKEY-CB-04', logo: 'CB', active: true, openTickets: 12, activeAddons: 3 },
-        { id: '5', name: 'Cafe Bistro Sol', key: 'WKEY-CB-05', logo: 'CB', active: true, openTickets: 12, activeAddons: 3 },
-        { id: '6', name: 'Cafe Bistro', key: 'WKEY-CB-06', logo: 'CB', active: true, openTickets: 12, activeAddons: 3 },
-    ];
-
-    // Store in LocalStorage if not exists
-    if (!localStorage.getItem('supcrud_workspaces')) {
-        localStorage.setItem('supcrud_workspaces', JSON.stringify(mockWorkspaces));
-    }
+    // Fetch real data from Backend only
+    const fetchWorkspaces = async () => {
+        try {
+            const data = await window.fetchAPI('/workspaces');
+            // Assuming the backend returns an array of workspaces
+            return data.map(ws => ({
+                id: ws.id,
+                name: ws.name,
+                key: ws.workspace_key,
+                logo: ws.name.substring(0, 2).toUpperCase(),
+                active: ws.status === 'ACTIVE',
+                openTickets: 'N/A', // Endpoint under development
+                activeAddons: 0
+            }));
+        } catch (error) {
+            console.error("Backend not reachable. Error:", error);
+            alert("No se pudo conectar a la base de datos.");
+            return [];
+        }
+    };
 
     const grid = document.getElementById('workspacesGrid');
-    const workspaces = JSON.parse(localStorage.getItem('supcrud_workspaces')) || [];
 
-    const renderWorkspaces = () => {
+    const renderWorkspaces = async () => {
+        const workspaces = await fetchWorkspaces();
         grid.innerHTML = '';
         workspaces.forEach(ws => {
             const card = document.createElement('div');
@@ -55,17 +61,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add event listeners for Suspend
         document.querySelectorAll('.suspend-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', async (e) => {
                 const id = e.target.getAttribute('data-id');
-                const index = workspaces.findIndex(w => w.id === id);
+                const index = workspaces.findIndex(w => w.id == id);
                 if (index > -1) {
-                    workspaces[index].active = !workspaces[index].active;
-                    localStorage.setItem('supcrud_workspaces', JSON.stringify(workspaces));
-                    renderWorkspaces(); // Re-render
+                    const isActive = workspaces[index].active;
+                    try {
+                        await window.fetchAPI(`/workspaces/${id}`, {
+                            method: 'PUT',
+                            body: JSON.stringify({ status: isActive ? 'SUSPENDED' : 'ACTIVE' })
+                        });
+                        alert(`Workspace ${isActive ? 'suspendido' : 'reactivado'} exitosamente.`);
+                        renderWorkspaces(); // Re-render
+                    } catch (err) {
+                        alert('Error actualizando en BD: ' + err.message);
+                    }
                 }
+            });
+        });
+
+        // Add event listeners for Manage
+        document.querySelectorAll('.ws-actions .btn-sm:not(.suspend-btn)').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const wsId = e.target.nextElementSibling.getAttribute('data-id');
+                const ws = workspaces.find(w => w.id == wsId);
+                if (ws) {
+                    alert(`Gestionando Workspace: ${ws.name}\nKey: ${ws.key}\n\n(Panel integral de administración en desarrollo)`);
+                }
+            });
+        });
+
+        // Add event listeners for Add-on config buttons
+        document.querySelectorAll('.addons-catalog .btn-sm').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const btnRef = e.currentTarget;
+                const originalText = btnRef.textContent;
+                btnRef.textContent = "Proximamente...";
+                btnRef.disabled = true;
+                setTimeout(() => {
+                    btnRef.textContent = originalText;
+                    btnRef.disabled = false;
+                }, 2000);
             });
         });
     };
 
+    const updateMetrics = async () => {
+        try {
+            const metrics = await fetchAPI('/metrics');
+            const metricValues = document.querySelectorAll('.metric-value');
+            if (metricValues.length >= 3) {
+                metricValues[0].textContent = metrics.total_workspaces || 0;
+                metricValues[1].textContent = metrics.active_tickets || 0;
+                metricValues[2].textContent = metrics.total_agents || 0;
+                metricValues[3].textContent = 0; // Add-ons are mocked for now
+            }
+        } catch (e) {
+            console.warn("Could not load metrics", e);
+        }
+    };
+
+    // Logout Logic
+    const btnLogout = document.getElementById('btnLogout');
+    if (btnLogout) {
+        btnLogout.addEventListener('click', () => {
+            localStorage.removeItem('supcrud_user_name');
+            localStorage.removeItem('supcrud_user_email');
+            window.location.href = 'index.html';
+        });
+    }
+
     renderWorkspaces();
+    updateMetrics();
 });

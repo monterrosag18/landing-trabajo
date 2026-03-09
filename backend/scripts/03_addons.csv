@@ -1,0 +1,31 @@
+slug,name,description,is_active_global
+live-chat,Live Chat,Chat en tiempo real con clientes,0
+email-bot,Email Bot,Respuestas automáticas por correo,0
+ai-classify,AI Classifier,Clasificación automática de tickets,1
+kb-search,Knowledge Base Search,Búsqueda en base de conocimiento,1
+sla-alerts,SLA Alerts,Alertas de incumplimiento de SLA,1
+csat-survey,CSAT Survey,Encuestas de satisfacción,1
+sentiment-ai,Sentiment Analysis,Análisis de sentimiento en mensajes,0
+crm-sync,CRM Sync,Sincronización con CRM externo,1
+whatsapp,WhatsApp Integration,Canal WhatsApp Business,1
+slack-notif,Slack Notifications,Notificaciones a canales Slack,1
+auto-assign,Auto Assign,Asignación automática de agentes,1
+ticket-tags,Ticket Tags,Etiquetado inteligente de tickets,0
+chatgpt-assist,ChatGPT Assistant,Sugerencias de respuesta con GPT,1
+reports-pro,Reports Pro,Reportes avanzados y dashboards,1
+sms-gateway,SMS Gateway,Envío de SMS a usuarios,1
+voice-ai,Voice AI,Atención por voz automatizada,1
+translate,Auto Translate,Traducción automática de mensajes,1
+escalation,Smart Escalation,Escalamiento inteligente,1
+audit-log,Audit Log,Registro de auditoría completo,1
+gdpr-tools,GDPR Tools,Herramientas de cumplimiento GDPR,1
+integrations,Integrations Hub,Hub de integraciones externas,1
+analytics-ai,Analytics AI,Analítica impulsada por IA,1
+ticket-merge,Ticket Merge,Fusión de tickets duplicados,0
+canned-resp,Canned Responses,Respuestas predefinidas rápidas,0
+dark-mode,Dark Mode UI,Interfaz en modo oscuro,1
+mobile-app,Mobile App,Acceso desde app móvil,1
+api-access,API Access,Acceso extendido a la API,0
+sso,SSO Login,Inicio de sesión único empresarial,1
+webhooks,Webhooks,Webhooks de eventos en tiempo real,1
+2fa,Two-Factor Auth,Autenticación de doble factor,1

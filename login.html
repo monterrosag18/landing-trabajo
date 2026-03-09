@@ -118,6 +118,7 @@
         </div>
     </main>
 
+    <script src="js/api-config.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const btnSignIn = document.getElementById('btnSignIn');
@@ -142,15 +143,14 @@
             });
 
             // Mock Routing logic based on requirements
-            formSignIn.addEventListener('submit', (e) => {
+            formSignIn.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const email = emailInput.value.trim().toLowerCase();
 
-                // Save basic mock info for the dashboard
+                // Save basic info for the dashboard
                 localStorage.setItem('supcrud_user_email', email);
                 localStorage.setItem('supcrud_user_name', 'Agente ' + email.split('@')[0]);
 
-                // Requirement: El correo del Owner debe tener formato nombredelteam@crudzaso.com
                 if (email.endsWith('@crudzaso.com')) {
                     localStorage.setItem('supcrud_user_name', 'Owner Global');
                     window.location.href = 'owner.html';
@@ -159,16 +159,53 @@
                 }
             });
 
-            formSignUp.addEventListener('submit', (e) => {
+            formSignUp.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const regName = document.getElementById('regNameInput').value;
                 const regEmail = document.getElementById('regEmailInput').value;
 
-                localStorage.setItem('supcrud_user_name', regName);
-                localStorage.setItem('supcrud_user_email', regEmail);
+                const submitBtn = formSignUp.querySelector('button[type="submit"]');
+                const origText = submitBtn.textContent;
+                submitBtn.textContent = 'Creando en MySQL...';
+                submitBtn.disabled = true;
 
-                alert('Workspace Created (Mock)! Redirecting to Dashboard...');
-                window.location.href = 'workspace.html';
+                try {
+                    // 1. Create User in MySQL
+                    const userResponse = await window.fetchAPI('/users', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            email: regEmail,
+                            full_name: 'Admin ' + regName,
+                            password_hash: '12345'
+                        })
+                    });
+
+                    const userId = userResponse.id;
+
+                    // 2. Create Workspace in MySQL
+                    const wsResponse = await window.fetchAPI('/workspaces', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            owner_id: userId,
+                            workspace_key: 'KEY-' + Date.now().toString().slice(-4),
+                            name: regName
+                        })
+                    });
+
+                    // Store real DB data for dashboard
+                    localStorage.setItem('supcrud_user_name', regName);
+                    localStorage.setItem('supcrud_user_email', regEmail);
+                    localStorage.setItem('supcrud_workspace_id', wsResponse.id);
+
+                    alert('Registro Exitoso en MySQL. Redirigiendo...');
+                    window.location.href = 'workspace.html';
+
+                } catch (error) {
+                    alert('Error creando en backend (revisa consola): ' + error.message);
+                } finally {
+                    submitBtn.textContent = origText;
+                    submitBtn.disabled = false;
+                }
             });
         });
     </script>

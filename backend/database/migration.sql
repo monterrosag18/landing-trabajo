@@ -1,0 +1,5 @@
+ALTER TABLE ticket_references
+ADD COLUMN subject VARCHAR(255) DEFAULT 'Sin Asunto',
+ADD COLUMN description TEXT,
+ADD COLUMN type VARCHAR(10) DEFAULT 'P',
+ADD COLUMN status VARCHAR(20) DEFAULT 'OPEN';

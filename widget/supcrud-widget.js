@@ -94,8 +94,8 @@
     btnOpen.addEventListener('click', toggleModal);
     btnClose.addEventListener('click', toggleModal);
 
-    // Simulated Submission (MySQL backend placeholder)
-    form.addEventListener('submit', (e) => {
+    // Backend Submission
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const email = document.getElementById('supcrud-email').value;
@@ -104,31 +104,55 @@
         const desc = document.getElementById('supcrud-desc').value;
 
         // Generate mock reference code: REF-[WORKSPACE]-Random
-        // In real life, Workspace ID is injected when embedding the script. For now, hardcode 'CBS'
         const randomNum = Math.floor(1000 + Math.random() * 9000);
         const refCode = `REF-CBS-${randomNum}`;
 
-        // Create new ticket object
-        const newTicket = {
-            id: Date.now().toString(),
-            ref: refCode,
-            subject: subject,
-            email: email,
-            type: type,
-            status: 'OPEN',
-            agent: 'Sin asignar',
-            date: new Date().toISOString().split('T')[0]
-        };
+        const subBtn = form.querySelector('.supcrud-submit');
+        const originalText = subBtn.textContent;
+        subBtn.textContent = 'Enviando...';
+        subBtn.disabled = true;
 
         // --- BACKEND INTEGRATION POINT ---
-        // fetch('https://tu-api.com/api/tickets', { method: 'POST', body: JSON.stringify(newTicket) })
-        // .then(...)
-        // ---------------------------------
+        // Se asume que el backend corre en http://localhost:3002/api
+        const newTicket = {
+            reference_code: refCode,
+            workspace_id: 1, // Simulated workspace ID matching the DB
+            user_email: email,
+            subject: subject,
+            description: desc,
+            type: type,
+            status: 'OPEN'
+        };
 
-        // Local Storage Simulation for Prototype
-        const existingTickets = JSON.parse(localStorage.getItem('supcrud_tickets')) || [];
-        existingTickets.unshift(newTicket); // Add to beginning
-        localStorage.setItem('supcrud_tickets', JSON.stringify(existingTickets));
+        try {
+            const response = await fetch('http://localhost:3002/api/ticket-references', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newTicket)
+            });
+
+            if (!response.ok) throw new Error('API request failed');
+
+        } catch (error) {
+            console.warn("Backend not reachable or error. Falling back to local storage.", error);
+            // Local Storage Simulation for Prototype
+            const mockFullTicket = {
+                id: Date.now().toString(),
+                ref: refCode,
+                subject: subject,
+                email: email,
+                type: type,
+                status: 'OPEN',
+                agent: 'Sin asignar',
+                date: new Date().toISOString().split('T')[0]
+            };
+            const existingTickets = JSON.parse(localStorage.getItem('supcrud_tickets')) || [];
+            existingTickets.unshift(mockFullTicket);
+            localStorage.setItem('supcrud_tickets', JSON.stringify(existingTickets));
+        } finally {
+            subBtn.textContent = originalText;
+            subBtn.disabled = false;
+        }
 
         // Show Success View
         form.style.display = 'none';

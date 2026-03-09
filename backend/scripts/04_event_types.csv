@@ -1,0 +1,31 @@
+code,label,description
+TICKET_CREATED,Ticket Creado,El ticket fue creado por el usuario
+TICKET_ASSIGNED,Ticket Asignado,Asignado a un agente
+TICKET_REOPENED,Ticket Reabierto,El usuario reabrió el ticket
+TICKET_CLOSED,Ticket Cerrado,El ticket fue cerrado
+TICKET_ESCALATED,Ticket Escalado,Escalado a nivel superior
+MESSAGE_SENT,Mensaje Enviado,Mensaje enviado por agente
+MESSAGE_RECEIVED,Mensaje Recibido,Mensaje recibido del usuario
+NOTE_ADDED,Nota Agregada,Nota interna agregada
+ATTACHMENT_ADDED,Adjunto Agregado,Se adjuntó un archivo
+OTP_GENERATED,OTP Generado,Código OTP generado
+OTP_VERIFIED,OTP Verificado,Código OTP validado correctamente
+OTP_FAILED,OTP Fallido,Intento de OTP incorrecto
+SLA_BREACHED,SLA Incumplido,Se superó el tiempo límite de SLA
+RATING_SUBMITTED,Valoración Enviada,Usuario envió valoración CSAT
+TRANSFER,Transferencia,Ticket transferido entre agentes
+PRIORITY_CHANGED,Prioridad Cambiada,Prioridad del ticket modificada
+STATUS_CHANGED,Estado Cambiado,Estado general modificado
+TAG_ADDED,Etiqueta Agregada,Se agregó una etiqueta al ticket
+TAG_REMOVED,Etiqueta Eliminada,Se eliminó una etiqueta
+MERGED,Fusionado,Tickets fusionados
+SURVEY_SENT,Encuesta Enviada,Encuesta de satisfacción enviada
+SURVEY_COMPLETED,Encuesta Completada,Usuario completó la encuesta
+EMAIL_SENT,Correo Enviado,Correo enviado al usuario
+SMS_SENT,SMS Enviado,SMS enviado al usuario
+WHATSAPP_SENT,WhatsApp Enviado,Mensaje WhatsApp enviado
+BOT_RESPONSE,Respuesta Bot,Respuesta automática del bot
+ESCALATION_RESOLVED,Escalamiento Resuelto,El escalamiento fue resuelto
+REOPENED_AUTO,Reapertura Automática,Reabierto por sistema automáticamente
+CLOSED_AUTO,Cierre Automático,Cerrado automáticamente por inactividad
+AUDIT_EVENT,Evento de Auditoría,Evento registrado para auditoría

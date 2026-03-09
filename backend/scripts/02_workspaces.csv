@@ -1,0 +1,31 @@
+owner_id,workspace_key,name,status,ai_mode
+1,ws-soporteti-01,Soporte TI,ACTIVE,GPT4
+2,ws-crmventas-02,CRM Ventas,ACTIVE,
+3,ws-helpdesk-03,Help Desk,INACTIVE,
+4,ws-opscolombia-04,Ops Colombia,ACTIVE,GEMINI
+5,ws-devbackend-05,Dev Backend,INACTIVE,CLAUDE
+6,ws-marketingdig-06,Marketing Digital,ACTIVE,CLAUDE
+7,ws-customercare-07,Customer Care,ACTIVE,GPT4
+8,ws-infraestruct-08,Infraestructura,ACTIVE,GPT4
+9,ws-qatesting-09,QA Testing,ACTIVE,CLAUDE
+10,ws-finanzas-10,Finanzas,SUSPENDED,CLAUDE
+11,ws-rrhhdigital-11,RR.HH. Digital,ACTIVE,
+12,ws-legaltech-12,Legal Tech,ACTIVE,
+13,ws-logística-13,Logística,ACTIVE,CLAUDE
+14,ws-dataanalytic-14,Data Analytics,ACTIVE,GPT4
+15,ws-seguridad-15,Seguridad,INACTIVE,CLAUDE
+16,ws-proyectosági-16,Proyectos Ágiles,SUSPENDED,CLAUDE
+17,ws-uxresearch-17,UX Research,SUSPENDED,GPT4
+18,ws-cloudops-18,Cloud Ops,ACTIVE,
+19,ws-compliance-19,Compliance,SUSPENDED,CLAUDE
+20,ws-e-commerce-20,E-Commerce,ACTIVE,
+21,ws-chatbotstudi-21,Chatbot Studio,ACTIVE,CLAUDE
+22,ws-bireporting-22,BI & Reporting,ACTIVE,
+23,ws-retailops-23,Retail Ops,ACTIVE,
+24,ws-healthtech-24,HealthTech,ACTIVE,GPT4
+25,ws-edutech-25,EduTech,INACTIVE,CLAUDE
+26,ws-insurtech-26,InsurTech,ACTIVE,GPT4
+27,ws-realestate-27,Real Estate,INACTIVE,
+28,ws-foodtech-28,FoodTech,INACTIVE,
+29,ws-medops-29,MedOps,ACTIVE,
+30,ws-salesforce-30,SalesForce,ACTIVE,
