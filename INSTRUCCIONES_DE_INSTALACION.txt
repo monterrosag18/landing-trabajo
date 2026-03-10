@@ -28,7 +28,10 @@ Para iniciarlo en la nueva PC:
    cd ruta/hacia/supcrud/backend
 2. Instala las dependencias de Node ejecutando:
    npm install
-3. Inicia el servidor ejecutando:
+3. **IMPORTANTE:** Vuelve a la carpeta principal (supcrud) y ejecuta el script de corrección de base de datos para añadir las columnas faltantes (ejecutar solo una vez):
+   node ../fix_db.js
+4. Vuelve a la carpeta backend e inicia el servidor ejecutando:
+   cd backend
    node server.js
    (Verás mensajes en verde diciendo "Server HTTP running on port 3002" y "MySQL conectado").
 
